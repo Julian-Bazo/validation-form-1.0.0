@@ -1,2 +1,2 @@
-# odin-todo-list
-A project to practice SOLID principles and module syntax.
+# Form Validation
+Basic form utilizing constraint validation API
