@@ -38,10 +38,16 @@ export default function validate() {
         if (postcodeValidatorExistsForCountry(abbreviation) === false) {
             country.setCustomValidity("Country not in registry!")
         }
+        else {
+            report.textContent = "";
+        }
 
         console.log(country.value);
         console.log(abbreviation);
     })
+
+    console.log(postcodeValidatorExistsForCountry("AO"));
+
 
     postal.addEventListener("input", (event) => {
         postal.setCustomValidity("");
@@ -49,17 +55,35 @@ export default function validate() {
             postal.reportValidity();
             return;
         }
-        if (postcodeValidator(postal.value, `${abbreviation}`) === false) {
+
+        if (postcodeValidatorExistsForCountry(`${abbreviation}`) !== true) {
+            postal.setCustomValidity("Country is not in our registry");
+            postal.reportValidity();
+        }
+
+        if (postcodeValidatorExistsForCountry(`${abbreviation}`) === true){
+        if (postcodeValidator(postal.value, `${abbreviation}`) !== true) {
             postal.setCustomValidity(`Must be a valid ${abbreviation} postal code!`);
             postal.reportValidity();
         }
-        console.log(postcodeValidator(postal.value, `${abbreviation}`))
+    }
+        else {
+            report.textContent = "";
+        }
     })
 
     submitButton.addEventListener("click", () => {
         if(!email.validity.valid) {
             event.preventDefault();
             report.textContent = "Enter a valid email!";
+        }
+        if(!country.validity.valid || postcodeValidatorExistsForCountry(`${abbreviation}`) !== true) {
+            event.preventDefault();
+            report.textContent = "Country not in registry!";
+        }
+        if(!postal.validity.valid) {
+            event.preventDefault();
+            report.textContent = "Postal code does not match selected country!";
         }
     })
 }
