@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.101.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve",
+    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "start-up": "npm install -D webpack webpack-cli && npx webpack && npm install -D html-webpack-plugin && npx webpack && npm install -D style-loader css-loader && npx webpack && npm install -D html-loader && npx webpack && npm install -D webpack-dev-server && npx webpack",
+    "lint-setup": "npm init @eslint/config@latest && npx webpack",
+    "prettier-setup": "npm install -D --save-exact prettier && node --eval 'fs.writeFileSync('.prettierrc','{}\n')' && node --eval `fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')` && npx webpack",
+    "fix": "npx prettier . --write"
+  }
+}
