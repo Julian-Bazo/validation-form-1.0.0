@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+    <title>Form Validation</title>
 </head>
 <body>
+    <form class="form" novalidate>
 
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required placeholder="john@example.com">
+
+        <label for="country">Country:</label>
+        <select name="country" id="country" required placeholder="Country">
+            <option>Select a country</option>
+
+        </select>
+
+        <label for="postal">Postal Code:</label>
+        <input type="text" name="postal" id="postal" placeholder="45304">
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+
+        <label for="confirm">Confirm Password:</label>
+        <input type="password" name="confirm" id="confirm">
+
+        <button type="submit" class="form-button">Submit</button>
+        <button type="reset" class="form-button">Reset</button>
+
+    </form>
 </body>
 </html>
