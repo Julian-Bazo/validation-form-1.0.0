@@ -9,7 +9,7 @@
     <form class="form" novalidate>
 
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required placeholder="john@example.com" autocomplete="none">
+        <input type="email" name="email" id="email" required placeholder="john@gmail.com" autocomplete="none" autofocus>
 
         <label for="country">Country:</label>
         <select name="country" id="country" required placeholder="Country">
@@ -21,10 +21,10 @@
         <input type="text" name="postal" id="postal" autocomplete="none">
 
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" maxlength="15" minlength="5">
 
         <label for="confirm">Confirm Password:</label>
-        <input type="password" name="confirm" id="confirm">
+        <input type="password" name="confirm" id="confirm" maxlength="15">
 
         <button type="submit" id="submit" value="Validate" class="form-button">Submit</button>
         <button type="reset" id="reset" class="form-button">Reset</button>

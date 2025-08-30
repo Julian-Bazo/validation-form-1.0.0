@@ -7,3 +7,9 @@ import validate from "./validate";
 
 validate();
 selectCountry();
+
+// TODO
+// Finish password validation
+// Create invalid and valid styles in CSS
+// Apply proper spacing to form
+// check out .onchange window event, to validate on window actions

@@ -1,3 +1,11 @@
 * {
     background-color: #eee;
 }
+
+input:invalid {
+    border: 2px red solid;
+}
+
+.unfilled {
+    border: black 2px solid;
+}

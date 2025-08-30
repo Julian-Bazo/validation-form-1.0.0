@@ -9,8 +9,13 @@ export default function validate() {
     const country = document.querySelector("#country");
     const postal = document.querySelector("#postal");
 
-    let abbreviation;
+    const password = document.querySelector("#password");
+    const confirm = document.querySelector("#confirm");
 
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).+$/;
+
+    let abbreviation;
+    let passConfirm;
 
     email.addEventListener("input", (event) => {
         email.setCustomValidity("");
@@ -42,11 +47,9 @@ export default function validate() {
             report.textContent = "";
         }
 
-        console.log(country.value);
-        console.log(abbreviation);
+        // console.log(country.value);
+        // console.log(abbreviation);
     })
-
-    console.log(postcodeValidatorExistsForCountry("AO"));
 
 
     postal.addEventListener("input", (event) => {
@@ -67,23 +70,62 @@ export default function validate() {
             postal.reportValidity();
         }
     }
+        if (postcodeValidator(postal.value, `${abbreviation}`) === true) {
+            report.textContent = "";
+        }
+    })
+
+    password.addEventListener("input", (event) => {
+        password.setCustomValidity("");
+        if (!password.validity.valid) {
+            password.reportValidity();
+            return;
+        }
+        if (!passwordRegex.test(password.value)) {
+            password.setCustomValidity("Password must contain at least ONE digit and ONE uppercase character");
+        }
+        if (passwordRegex.test(password.value)) {
+            passConfirm = password.value;
+            report.textContent = "";
+        }
+    })
+
+    confirm.addEventListener("input", (event) => {
+        confirm.setCustomValidity("");
+        if (!confirm.validity.valid) {
+            confirm.reportValidity();
+            return;
+        }
+        if (confirm.value !== passConfirm) {
+            confirm.setCustomValidity("Passwords do not match");
+        }
         else {
             report.textContent = "";
         }
     })
 
+    confirm.addEventListener    
+
     submitButton.addEventListener("click", () => {
-        if(!email.validity.valid) {
+        if (!confirm.validity.valid || confirm.value === "") {
             event.preventDefault();
-            report.textContent = "Enter a valid email!";
+            report.textContent = "Passwords do not match";
+        }
+        if(!password.validity.valid || password.value === "") {
+            event.preventDefault();
+            report.textContent = "Password must contain at least ONE digit and ONE uppercase character";
+        }
+        if(!postal.validity.valid || postal.value === "") {
+            event.preventDefault();
+            report.textContent = "Postal code does not match selected country!";
         }
         if(!country.validity.valid || postcodeValidatorExistsForCountry(`${abbreviation}`) !== true) {
             event.preventDefault();
             report.textContent = "Country not in registry!";
         }
-        if(!postal.validity.valid) {
+        if(!email.validity.valid || email.value === "") {
             event.preventDefault();
-            report.textContent = "Postal code does not match selected country!";
+            report.textContent = "Enter a valid email!";
         }
     })
 }
