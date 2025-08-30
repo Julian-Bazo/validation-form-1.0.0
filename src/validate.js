@@ -8,6 +8,8 @@ export default function validate() {
 
     const country = document.querySelector("#country");
     const postal = document.querySelector("#postal");
+        // postal.readOnly = true;
+        // postal.style.cursor = "not-allowed";
 
     const password = document.querySelector("#password");
     const confirm = document.querySelector("#confirm");
@@ -45,6 +47,8 @@ export default function validate() {
         }
         else {
             report.textContent = "";
+            // postal.readOnly = "false";
+            // postal.style.cursor = "text";
         }
 
         // console.log(country.value);
@@ -65,14 +69,15 @@ export default function validate() {
         }
 
         if (postcodeValidatorExistsForCountry(`${abbreviation}`) === true){
-        if (postcodeValidator(postal.value, `${abbreviation}`) !== true) {
+            if (postcodeValidator(postal.value, `${abbreviation}`) !== true) {
             postal.setCustomValidity(`Must be a valid ${abbreviation} postal code!`);
             postal.reportValidity();
-        }
-    }
-        if (postcodeValidator(postal.value, `${abbreviation}`) === true) {
+            }
+            if (postcodeValidator(postal.value, `${abbreviation}`) === true) {
             report.textContent = "";
-        }
+            }
+    }
+
     })
 
     password.addEventListener("input", (event) => {

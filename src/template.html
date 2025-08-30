@@ -6,28 +6,39 @@
     <title>Form Validation</title>
 </head>
 <body>
-    <form class="form" novalidate>
+    <form class="whole-form" novalidate>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required placeholder="john@gmail.com" autocomplete="none" autofocus>
+        <div class="email-div">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required placeholder="john@gmail.com" autocomplete="none">
+        </div>
 
-        <label for="country">Country:</label>
-        <select name="country" id="country" required placeholder="Country">
-            <option>Select a country</option>
+        <div class="country-div">
+            <label for="country">Country:</label>
+            <select name="country" id="country" required placeholder="Country">
+                <option>Select a country</option>
+            </select>
+        </div>
 
-        </select>
+        <div class="postal-div">
+            <label for="postal">Postal Code:</label>
+            <input type="text" name="postal" id="postal" autocomplete="none" placeholder="Postal Code" required autocomplete= "none">
+        </div>
 
-        <label for="postal">Postal Code:</label>
-        <input type="text" name="postal" id="postal" autocomplete="none">
+        <div class="password-div">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" maxlength="15" minlength="5" placeholder="Password" required>
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" maxlength="15" minlength="5">
+        <div class="confirm-div">
+            <label for="confirm">Confirm Password:</label>
+            <input type="password" name="confirm" id="confirm" maxlength="15" required placeholder="Password">
+        </div>
 
-        <label for="confirm">Confirm Password:</label>
-        <input type="password" name="confirm" id="confirm" maxlength="15">
-
-        <button type="submit" id="submit" value="Validate" class="form-button">Submit</button>
-        <button type="reset" id="reset" class="form-button">Reset</button>
+        <div class="button-div">
+            <button type="submit" id="submit" value="Validate" class="form-button">Submit</button>
+            <button type="reset" id="reset" class="form-button">Reset</button>
+        </div>
 
         <div class="report"></div>
 

@@ -6,6 +6,21 @@ input:invalid {
     border: 2px red solid;
 }
 
+input:placeholder-shown {
+    border: 2px black solid;
+}
+
+input:valid {
+    border: 2px green solid;
+}
+
 .unfilled {
     border: black 2px solid;
+}
+
+.whole-form {
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    gap: 1rem;
 }
